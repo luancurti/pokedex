@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { fetchPokemons } from '../../services/poke-service'
+import { getPokemons } from '../../services/poke-service'
 import './index.css'
 
 import Pokemon from '../Pokemon/Pokemon'
@@ -14,7 +14,7 @@ class PokemonList extends Component {
   }
 
   async componentDidMount () {
-    const pokemons = await fetchPokemons()
+    const pokemons = await getPokemons()
     this.setState({ pokemons })
   }
 
