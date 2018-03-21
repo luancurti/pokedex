@@ -10,10 +10,9 @@ class AppContainer extends Component {
     }
   }
 
-  componentDidMount () {
-    fetchPokemons ()
-      .then(response => response.data.results)
-      .then(pokemons => this.setState({ pokemons }))
+  async componentDidMount () {
+    const pokemons = await fetchPokemons()
+    this.setState({ pokemons })
   }
 
   render () {

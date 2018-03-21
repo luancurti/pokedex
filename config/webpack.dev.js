@@ -4,14 +4,14 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   devServer: {
-    contentBase: "../dist",
+    contentBase: '../dist',
     historyApiFallback: true
   },
-  entry: [path.resolve(__dirname, "../src/index.js")],
+  entry: ['babel-polyfill', path.resolve(__dirname, '../src/index.js')],
   output: {
-    path: path.resolve(__dirname, "../dist"),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
-    filename: "[name].js"
+    filename: '[name].js'
   },
   mode: 'development',
   module: {
@@ -24,14 +24,14 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader"
+            loader: 'html-loader'
           }
         ]
       }
@@ -39,8 +39,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
+      template: './src/index.html',
+      filename: './index.html'
     })
   ]
 }

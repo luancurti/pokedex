@@ -1,4 +1,7 @@
 
 import { http } from './http'
 
-export const fetchPokemons = () => http.get(``)
+export async function fetchPokemons () {
+  const response = await http.get(``)
+  return response.data.results
+}
