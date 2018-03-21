@@ -4,19 +4,19 @@ import { render } from 'react-dom'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 
 import App from './app'
-import AppContainer from './components/AppContainer'
+import PokemonList from './components/PokemonList'
 
-const markup = (
+const AppRouter = (
   <BrowserRouter>
     <App>
       <Switch>
         <Route exact path='/'>
           <Redirect to='/pokemons' />
         </Route>
-        <Route exact path='/pokemons' component={AppContainer}/>
+        <Route exact path='/pokemons' component={PokemonList}/>
       </Switch>
     </App>
   </BrowserRouter>
 )
 
-render(markup, document.getElementById('app'))
+render(AppRouter, document.getElementById('app'))

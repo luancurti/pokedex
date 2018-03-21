@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 
 import { fetchPokemons } from '../services/poke-service'
 
-class AppContainer extends Component {
+import Pokemon from './Pokemon'
+
+class PokemonList extends Component {
   constructor () {
     super()
     this.state = {
@@ -22,11 +24,15 @@ class AppContainer extends Component {
       <div className='App'>
         <h1>Lista de Pokemons</h1>
         <ul>
-          {pokemons.map((pokemon, index) => <li key={index}>{pokemon.name}</li>)}
+          {pokemons.map(
+            (pokemon, index) => (
+              <Pokemon pokemon={pokemon} key={index} />
+            )
+          )}
         </ul>
       </div>
     )
   }
 }
 
-export default AppContainer
+export default PokemonList
