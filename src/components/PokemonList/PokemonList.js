@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
-import { fetchPokemons } from '../services/poke-service'
+import { fetchPokemons } from '../../services/poke-service'
+import './index.css'
 
-import Pokemon from './Pokemon'
+import Pokemon from '../Pokemon/Pokemon'
 
 class PokemonList extends Component {
   constructor () {
@@ -21,16 +22,13 @@ class PokemonList extends Component {
     const { pokemons } = this.state
 
     return (
-      <div className='App'>
-        <h1>Lista de Pokemons</h1>
-        <ul>
-          {pokemons.map(
-            (pokemon, index) => (
-              <Pokemon pokemon={pokemon} key={index} />
-            )
-          )}
-        </ul>
-      </div>
+      <section className='poke-list'>
+        {pokemons.map(
+          (pokemon, index) => (
+            <Pokemon pokemon={pokemon} key={index} />
+          )
+        )}
+      </section>
     )
   }
 }

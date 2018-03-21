@@ -3,8 +3,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './index.css'
+
 const Pokemon = ({ pokemon }) => (
-  <li>{pokemon.name}</li>
+  <button className='pokemon'>{pokemon.name}</button>
 )
 
 Pokemon.propTypes = {

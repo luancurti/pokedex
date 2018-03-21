@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 
 import App from './app'
-import PokemonList from './components/PokemonList'
+import PokemonList from './components/PokemonList/PokemonList'
 
 const AppRouter = (
   <BrowserRouter>
