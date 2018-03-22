@@ -15,6 +15,7 @@ const AppRouter = (
         <Route exact path='/'><Redirect to='/pokemons' /></Route>
         <Route exact path='/pokemons' component={PokemonList}/>
         <Route exact path='/pokemons/:id' component={PokemonDetail}/>
+        <Redirect from='*' to='/pokemons' />
       </Switch>
     </App>
   </BrowserRouter>
