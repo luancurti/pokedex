@@ -12,7 +12,6 @@ class PokemonList extends Component {
     this.state = {
       pokemons: []
     }
-    this.redirectToDetail = this.redirectToDetail.bind(this)
   }
 
   async componentDidMount () {
@@ -35,7 +34,7 @@ class PokemonList extends Component {
               <Pokemon
                 pokemon={pokemon}
                 key={index}
-                handleClick={this.redirectToDetail}
+                handleClick={(id) => this.redirectToDetail(id)}
                 pokeClass={pokeClasses[index]} />
             )
           )}
