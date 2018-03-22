@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './index.css'
+import './app.scss'
 
 const App = props => (
-  <div className='App'>{props.children}</div>
+  <div className='app'>{props.children}</div>
 )
 
 App.propTypes = {

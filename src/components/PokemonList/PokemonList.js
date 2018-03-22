@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { getPokemons } from '../../services/poke-service'
 import { pokeClasses } from '../../pokeClasses'
-import './index.css'
+import './index.scss'
 
 import Pokemon from '../Pokemon/Pokemon'
 
@@ -24,14 +24,16 @@ class PokemonList extends Component {
 
     return (
       <section className='poke-list'>
-        {pokemons.map(
-          (pokemon, index) => (
-            <Pokemon
-              pokemon={pokemon}
-              key={index}
-              pokeClass={pokeClasses[index]} />
-          )
-        )}
+        <div className='poke-list__container'>
+          {pokemons.map(
+            (pokemon, index) => (
+              <Pokemon
+                pokemon={pokemon}
+                key={index}
+                pokeClass={pokeClasses[index]} />
+            )
+          )}
+        </div>
       </section>
     )
   }
