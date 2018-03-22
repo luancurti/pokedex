@@ -1,0 +1,43 @@
+@import '../../assets/colors.scss';
+
+.poke-detail {
+  height: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin: -15px 0 -15px 0;
+  display: inline-block;
+
+  background-color: $darken-red;
+
+  .poke-detail__sprite-image {
+    width: 80%;
+    height: 150px;
+    margin: 10px auto;
+    border: 15px solid $darken-white;
+    border-radius: 5px;
+
+    color: $grey;
+    background-color: $grey;
+  }
+
+  .poke-detail__info-wrapper {
+    width: 80%;
+    height: 110px;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.22);
+
+    color: $white;
+    background-color: $grey;
+
+    .poke-detail__data-name {
+      margin: 0 0 5px;
+    }
+
+    .poke-detail__data-char {
+      font-size: 10px;
+    }
+  }
+}
