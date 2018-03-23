@@ -1,19 +1,38 @@
 import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { getPokemonsById } from '../../services/poke-service'
+import * as actions from '../../state-management/actions'
+
 import './index.scss'
 
 class PokemonDetail extends Component {
   constructor () {
     super()
     this.state = {
-      pokemon: {}
+      pokemon: {},
+      pokemonId: undefined
     }
   }
 
-  async componentDidMount () {
-    const pokemon = await getPokemonsById(1)
-    this.setState({ pokemon })
+  getPokemonId () {
+    return this.props.location.pathname.split('/')[2]
+  }
+
+  componentWillMount () {
+    this.setState({
+      pokemonId: this.getPokemonId()
+    })
+  }
+
+  componentWillReceiveProps (props) {
+    this.setState({
+      pokemon: props.pokemon
+    })
+  }
+
+  componentDidMount () {
+    this.props.actions.loadPokemon(this.state.pokemonId)
   }
 
   render () {
@@ -35,4 +54,16 @@ class PokemonDetail extends Component {
   }
 }
 
-export default PokemonDetail
+function mapStateToProps (state) {
+  return {
+    pokemon: state.pokemon
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetail)

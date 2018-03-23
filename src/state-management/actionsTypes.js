@@ -1,0 +1,3 @@
+export const LOAD_POKEMONS = 'LOAD_POKEMONS'
+
+export const LOAD_POKEMON = 'LOAD_POKEMON'

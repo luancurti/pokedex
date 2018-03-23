@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { getPokemons } from '../../services/poke-service'
+import * as actions from '../../state-management/actions'
+
 import { pokeClasses } from '../../pokeClasses'
 import './index.scss'
 
@@ -14,9 +17,14 @@ class PokemonList extends Component {
     }
   }
 
-  async componentDidMount () {
-    const pokemons = await getPokemons()
-    this.setState({ pokemons })
+  componentDidMount () {
+    this.props.actions.loadPokemons()
+  }
+
+  componentWillReceiveProps (props) {
+    this.setState({
+      pokemons: props.pokemons
+    })
   }
 
   redirectToDetail (pokemonId) {
@@ -44,4 +52,16 @@ class PokemonList extends Component {
   }
 }
 
-export default PokemonList
+function mapStateToProps (state) {
+  return {
+    pokemons: state.pokemons
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonList)
