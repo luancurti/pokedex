@@ -1,10 +1,12 @@
 import axios from 'axios'
 
+import * as actionsTypes from './actionsTypes'
+
 const baseUrl = `https://pokeapi.co/api/v2/pokemon/`
 
 export function loadPokemonsSuccess (pokemons) {
   return {
-    type: 'LOAD_POKEMONS',
+    type: actionsTypes.LOAD_POKEMONS,
     payload: {
       pokemons
     }
@@ -13,7 +15,7 @@ export function loadPokemonsSuccess (pokemons) {
 
 export function loadPokemonSuccess (pokemon) {
   return {
-    type: 'LOAD_POKEMON',
+    type: actionsTypes.LOAD_POKEMON,
     payload: {
       pokemon
     }

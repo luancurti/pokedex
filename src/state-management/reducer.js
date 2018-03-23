@@ -5,19 +5,25 @@ const initialState = {
   pokemons: []
 }
 
-export default function pokedexReducer (state = initialState, action) {
-  switch (action.type) {
-    case actionsTypes.LOAD_POKEMONS:
-      return {
-        ...state,
-        ...action.payload
-      }
-    case actionsTypes.LOAD_POKEMON:
-      return {
-        ...state,
-        ...action.payload
-      }
-    default:
-      return state
+const pokedexReducer = (state = initialState, action) => {
+  const STATES = {
+    [actionsTypes.LOAD_POKEMONS]: {
+      ...state,
+      ...action.payload
+    },
+    [actionsTypes.LOAD_POKEMON]: {
+      ...state,
+      ...action.payload
+    }
   }
+
+  const currentState = STATES[action.type]
+
+  if (currentState) {
+    return currentState
+  }
+
+  return state
 }
+
+export default pokedexReducer
