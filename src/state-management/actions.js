@@ -1,8 +1,6 @@
-import axios from 'axios'
+import { getPokemons, getPokemonsById } from '../services/poke-service'
 
 import * as actionsTypes from './actionsTypes'
-
-const baseUrl = `https://pokeapi.co/api/v2/pokemon/`
 
 export function loadPokemonsSuccess (pokemons) {
   return {
@@ -23,21 +21,15 @@ export function loadPokemonSuccess (pokemon) {
 }
 
 export function loadPokemon (pokemonId) {
-  return function (dispatch) {
-    return axios.get(`${baseUrl}${pokemonId}`)
-      .then(response => {
-        const pokemon = response.data
-        dispatch(loadPokemonSuccess(pokemon))
-      })
+  return async function (dispatch) {
+    const pokemon = await getPokemonsById(pokemonId)
+    dispatch(loadPokemonSuccess(pokemon))
   }
 }
 
 export function loadPokemons () {
-  return function (dispatch) {
-    return axios.get(baseUrl)
-      .then(response => {
-        const pokemons = response.data.results
-        dispatch(loadPokemonsSuccess(pokemons))
-      })
+  return async function (dispatch) {
+    const pokemons = await getPokemons()
+    dispatch(loadPokemonsSuccess(pokemons))
   }
 }
