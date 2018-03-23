@@ -5,12 +5,9 @@ import PropTypes from 'prop-types'
 
 import './index.scss'
 
-import sprites from '../../assets/sprites.png'
-
 const Pokemon = ({ pokemon, pokeClass, handleClick }) => {
   const { id, backgroundPosition } = pokeClass
   const style = {
-    backgroundImage: `url(${sprites})`,
     backgroundPosition
   }
 
